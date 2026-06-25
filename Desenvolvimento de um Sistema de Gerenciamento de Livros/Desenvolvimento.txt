@@ -1,0 +1,62 @@
+﻿create database biblioteca;
+use biblioteca;
+
+
+create table autores(
+id_autor int ,
+nome varchar(50) primary key
+);
+
+
+create table livros(
+id_livro int primary key,
+id_autor varchar(50),
+titulo varchar(50),
+ano_publicacao date,
+foreign key (id_autor) references autores (nome)
+);
+
+
+insert into autores values
+(1,'João'),
+(2,'Pedro'),
+(3,'Felipe'),
+(4,'Sulivan'),
+(5,'Caprom'),
+(6,'Steve Roger'),
+(7,'Tom Cruseiro'),
+(8,'Juliano'),
+(9,'Garfield'),
+(10,'Bruce');
+
+
+insert into livros values
+(1,'João', 'Pão e mortadela', '2006-02-03'),
+(2,'Pedro', 'História de tragédia', '2006-02-23'),
+(3,'Felipe', 'Rei do bar', '2006-02-13'),
+(4,'Sulivan', 'Lado negro', '2006-02-23'),
+(5,'Caprom', 'Joia perdida', '2006-02-23'),
+(6,'Steve Roger', 'Conto atrapalhado', '2006-02-23'),
+(7,'Tom Cruseiro', 'Joeshen', '2006-02-23'),
+(8,'Juliano', 'Lavrarias', '2006-02-23'),
+(9,'Garfield', 'Gruta do colapso', '2006-02-23'),
+(10,'Bruce', 'Antes de dormir', '2006-02-23');
+
+
+-- Criação de stored procedure para obter os pedidos de um cliente específico
+
+
+DELIMITER //
+create procedure sp_BuscarLivrosPorAutor
+(in nome varchar(50))
+BEGIN
+SELECT p.id_autor, p.ano_publicacao, p.titulo
+FROM livros p
+WHERE p.id_autor = nome;
+END //
+
+
+DELIMITER ;
+
+
+CALL sp_BuscarLivrosPorAutor('pedro');
