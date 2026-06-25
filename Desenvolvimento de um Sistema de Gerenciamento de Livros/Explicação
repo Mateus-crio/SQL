@@ -1,0 +1,9 @@
+Atividade sobre o gerenciamento de livro
+Descrição:
+Criar um banco de dados para um sistema de gerenciamento de livros de uma biblioteca. Criar tabelas para armazenar informações sobre os livros e os autores, estabelecer relacionamentos entre essas tabelas e, finalmente, desenvolver uma procedure para buscar livros de um autor específico.
+Criar as seguintes tabelas:
+Autores: para armazenar informações sobre os autores, como ID do autor e nome.
+Livros: para armazenar informações sobre os livros, como ID do livro, título, ano de publicação e ID do autor.
+Inserir 10 registros nas tabelas Autores e Livros para fins de teste e demonstração.
+Estabelecer um relacionamento entre as tabelas Autores e Livros, garantindo que cada livro esteja associado a um autor específico.
+Desenvolver uma procedure chamada sp_BuscarLivrosPorAutor, que aceita o nome de um autor como entrada e retorna todos os livros escritos por esse autor. Executar a procedure sp_BuscarLivrosPorAutor, passando o nome de um autor como parâmetro, e verificar se os resultados estão corretos.
