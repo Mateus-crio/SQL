@@ -1,0 +1,13 @@
+Atividade com a função de modelo lógico
+Descrição da atividade:
+
+Crie um modelo lógico no MySQL para uma loja de roupas.
+Entidades (Pense nos atributos):
+Cliente
+Vendedor
+Produto
+Estoque
+Cidade
+Estado
+País
+Faça o relacionamento deles colocando corretamente as cardinalidades.
