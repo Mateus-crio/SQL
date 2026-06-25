@@ -1,0 +1,31 @@
+Atividade avaliativa
+Descrição:
+Uma universidade deseja criar um banco de dados para gerenciar informações sobre seus cursos, alunos e matrículas. Eles precisam armazenar dados sobre os cursos oferecidos, os alunos matriculados e suas informações pessoais, bem como registrar as matrículas dos alunos nos cursos. Além disso, desejam ter a capacidade de atualizar informações dos alunos e cursos, além de poderem consultar relatórios sobre os cursos e seus alunos.
+
+
+Você precisará utilizar:
+CREATE TABLE para matriculas, alunos e cursos.
+INSERT INTO para inserir 10 dados em cada tabela.
+UPDATE para atualizar o e-mail do aluno 01 e 02.
+SELECT*FROM para visualizar todas as tabelas.
+INNER JOIN para visualizar só o matricula e o curso.
+PROCEDURE que quando chamado faça a função do INNER JOIN  visualizando o curso e a quantidade de créditos que ele disponibiliza.
+Campos das tabelas
+matriculas
+MatriculaID 
+AlunoID
+CursoID 
+DataMatricula 
+Chave estrangeira das tabelas relacionadas.
+Alunos
+AlunoID
+Nome
+Email
+DataNascimento
+Telefone
+Endereco
+Cursos
+CursoID 
+NomeCurso 
+Departamento
+Créditos
