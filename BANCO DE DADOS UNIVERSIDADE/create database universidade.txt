@@ -1,0 +1,104 @@
+﻿create database universidade;
+use universidade;
+
+
+create table alunos(
+alunoid int primary key,
+nome varchar(50),
+email varchar(60),
+datanascimento date,
+telefone varchar(50),
+endereco varchar(50));
+
+
+create table cursos(
+cursoid int primary key,
+nomecurso varchar(50),
+departamento varchar(50),
+creditos integer);
+
+
+create table matriculas(
+matriculaid int primary key,
+alunoid int,
+cursoid int,
+datamatricula date,
+foreign key (cursoid) references cursos(cursoid),
+foreign key (alunoid) references alunos(alunoid));
+
+
+
+
+insert into alunos (alunoid, nome, email, datanascimento, telefone, endereco) values
+(1,"Mateus","mateus@gmail.com","1969-11-30", "54931384","Rua Antônio Numes"),
+(2,"João","joao@gmail.com","1969-12-25", "7845230","Rua Palmeias Novas"),
+(3,"Lucas","lucas@gmail.com","1969-10-05", "5548731","Rua Palmeias Velhas"),
+(4,"Marcos","marcos@gmail.com","1969-08-19", "55984206","Rua Curitiba"),
+(5,"Alex","alex@gmail.com","1969-09-03", "553321458","Rua Pastel"),
+(6,"Bruna","bruna@gmail.com","1969-01-12", "55894877","Rua Florindo Marcos"),
+(7,"Ana","ana@gmail.com","1969-02-15", "556120","Rua Leão"),
+(8,"Carlos","carlos@gmail.com","1969-10-30", "55877845","Rua Capricornio"),
+(9,"Vanessa","vanessa@gmail.com","1969-08-09", "55747126","Rua Savana"),
+(10,"Miriam","miriam@gmail.com","1969-06-19", "59711912","Rua Amazonas");
+
+
+insert into cursos (cursoid, nomecurso, departamento, creditos) values
+(1,"Automação","Mecânica", 55),
+(2,"Eletrónica","Elétrica", 54),
+(3,"Desenvolvimento WEB","TI", 50),
+(4,"Ingles","ADM", 40),
+(5,"Espanhol básico","ADM", 30),
+(6,"Administração","ADM", 64),
+(7,"AZ900","TI", 60),
+(8,"Google IA","TI", 60),
+(9,"Google clound","TI", 63),
+(10,"AWS","TI", 64);
+
+
+insert into matriculas (matriculaid, alunoid,cursoid,datamatricula) values 
+(1,1,1,"2006-03-01"),
+(2,2,2,"2006-06-11"),
+(3,3,3,"2006-10-13"),
+(4,4,4,"2006-07-05"),
+(5,5,5,"2006-08-07"),
+(6,6,6,"2006-07-06"),
+(7,7,7,"2006-08-06"),
+(8,8,8,"2006-03-03"),
+(9,9,9,"2006-01-10"),
+(10,10,10,"2006-02-16");
+
+
+select * from matriculas;
+select * from alunos;
+select * from cursos;
+
+
+select matriculas.alunoid, matriculas.cursoid, matriculas.datamatricula
+from matriculas
+inner join alunos on matriculas.alunoid = alunos.alunoid;
+
+
+update alunos 
+set email = "mateusinho@gmail.com"
+where alunoid = 1;
+
+
+update alunos
+set email = "jaodao@gmail.com"
+where alunoid = 2;
+
+
+select * from alunos;
+DELIMITER //        
+create procedure vizualizar_curso(in cursoid int)
+BEGIN
+select  matriculas.cursoid, cursos.nomecurso, cursos.creditos
+from matriculas
+inner join cursos on matriculas.cursoid = cursos.cursoid;
+END //
+DELIMITER ;
+
+
+
+
+call vizualizar_curso(1);
